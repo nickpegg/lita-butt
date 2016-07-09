@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/nickpegg/lita-butt.svg?branch=master)](https://travis-ci.org/nickpegg/lita-butt)
+[![Coverage Status](https://coveralls.io/repos/github/nickpegg/lita-butt/badge.svg?branch=master)](https://coveralls.io/github/nickpegg/lita-butt?branch=master)
+
 # lita-butt
 
 Butts. Inspired by some silliness in Yelp's chatbot.
