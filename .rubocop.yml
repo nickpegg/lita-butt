@@ -4,3 +4,5 @@ Metrics/LineLength:
 Style/FileName:
   Exclude:
     - 'lib/lita-butt.rb'
+Style/FrozenStringLiteralComment:
+  Enabled: false
