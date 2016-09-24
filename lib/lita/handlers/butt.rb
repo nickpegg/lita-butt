@@ -3,13 +3,20 @@ module Lita
     # s/chatbot/chatbutt/
     class Butt < Handler
       # insert handler code here
-      route(/^b(u*)tt/, :butt, help: { 'butt' => '(_)_)' })
+      route(/^b(u*)tt(s?)/, :butt, help: { 'butt' => '(_)_)' })
 
       def butt(response)
         groups = response.matches.first
         width = groups.first.size
 
-        response.reply "(#{'_' * width})#{'_' * width})"
+        bottom = '_' * width
+        butt = "(#{bottom})#{bottom})"
+
+        if groups.last == 's'
+          response.reply [butt, butt].join ' '
+        else
+          response.reply butt
+        end
       end
 
       Lita.register_handler(self)
