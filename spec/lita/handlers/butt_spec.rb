@@ -3,10 +3,13 @@ require 'spec_helper'
 describe Lita::Handlers::Butt, lita_handler: true do
   subject { described_class.new(robot) }
 
-  it { is_expected.to route('butt').to(:butt) }
-  it { is_expected.to route('btt').to(:butt) }
-  it { is_expected.to route('buuuuuutt').to(:butt) }
+  it { is_expected.to route('butt').to :butt }
+  it { is_expected.to route('btt').to :butt }
+  it { is_expected.to route('buuuuuutt').to :butt }
 
+  it { is_expected.to route('butts').to :butt }
+  it { is_expected.to route('btts').to :butt }
+  it { is_expected.to route('buuuuuutts').to :butt }
   describe '#butt' do
     it 'replies with a butt' do
       send_message 'butt'
@@ -31,6 +34,12 @@ describe Lita::Handlers::Butt, lita_handler: true do
     it 'replies with multiple big butts' do
       send_message 'buuuuutts'
       expect(replies.last).to eq '(_____)_____) (_____)_____)'
+    end
+  end
+
+  describe '#escape' do
+    it 'escapes a Slack butt' do
+      expect(subject.escape(subject.make_butt, :slack)).to eq '`(_)_)`'
     end
   end
 end

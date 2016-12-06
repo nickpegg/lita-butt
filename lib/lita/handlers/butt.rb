@@ -8,14 +8,27 @@ module Lita
       def butt(response)
         groups = response.matches.first
         width = groups.first.size
-
-        bottom = '_' * width
-        butt = "(#{bottom})#{bottom})"
+        butt = make_butt width
 
         if groups.last == 's'
-          response.reply [butt, butt].join ' '
+          response.reply(escape([butt, butt].join(' ')))
         else
-          response.reply butt
+          response.reply(escape(butt))
+        end
+      end
+
+      def make_butt(width = 1)
+        bottom = '_' * width
+        "(#{bottom})#{bottom})"
+      end
+
+      # Properly escape the butt for a given chat service
+      def escape(butt, adapter = robot.config.robot.adapter)
+        case adapter
+        when :slack
+          "`#{butt}`"
+        else
+          butt
         end
       end
 
