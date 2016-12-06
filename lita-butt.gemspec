@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'lita-butt'
-  spec.version       = '0.1.1'
+  spec.version       = '0.1.2'
   spec.authors       = ['Nick Pegg']
   spec.email         = ['git@nickpegg.com']
   spec.description   = 'Lita Handler to print ASCII butts'
